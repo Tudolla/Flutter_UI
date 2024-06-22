@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:pet_ui/model/planet_model.dart';
+import 'package:pet_ui/screen/drink_food_main_screen.dart';
 import 'package:pet_ui/screen/planet_detail_screen.dart';
 import 'package:pet_ui/utils/color.dart';
 
@@ -34,7 +35,7 @@ class _UniverHomePageState extends State<UniverHomePage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                const Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Text(
                     "Kiến thức",
@@ -49,7 +50,7 @@ class _UniverHomePageState extends State<UniverHomePage> {
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
                     children: [
-                      Text(
+                      const Text(
                         "Kinh nghiệm",
                         style: TextStyle(
                           color: Colors.white60,
@@ -70,7 +71,7 @@ class _UniverHomePageState extends State<UniverHomePage> {
                       itemHeight: 500,
                       itemWidth: double.infinity,
                       layout: SwiperLayout.TINDER,
-                      pagination: SwiperPagination(
+                      pagination: const SwiperPagination(
                           builder: DotSwiperPaginationBuilder(
                         activeSize: 7,
                         size: 4,
@@ -90,7 +91,7 @@ class _UniverHomePageState extends State<UniverHomePage> {
                             children: [
                               Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 180,
                                   ),
                                   Card(
@@ -100,7 +101,7 @@ class _UniverHomePageState extends State<UniverHomePage> {
                                     ),
                                     color: Colors.white,
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 30, vertical: 30),
                                       child: Column(
                                         crossAxisAlignment:
@@ -123,7 +124,7 @@ class _UniverHomePageState extends State<UniverHomePage> {
                                               fontWeight: FontWeight.normal,
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 20,
                                           ),
                                           Row(
@@ -172,7 +173,7 @@ class _UniverHomePageState extends State<UniverHomePage> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           color: navBarColor,
         ),
@@ -183,7 +184,10 @@ class _UniverHomePageState extends State<UniverHomePage> {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => DrinkScreen()));
+                  },
                   icon: Image.asset("images/menu_icon.png"),
                 ),
                 const Text(
