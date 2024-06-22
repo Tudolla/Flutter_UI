@@ -10,6 +10,7 @@ class PetsHomeScreen extends StatefulWidget {
 
 class _PetsHomeScreenState extends State<PetsHomeScreen> {
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -17,7 +18,7 @@ class _PetsHomeScreenState extends State<PetsHomeScreen> {
       body: SafeArea(child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children:const  [
             Padding(padding: EdgeInsets.only(left: 22),
             child: Row(
               children: [
@@ -34,8 +35,8 @@ class _PetsHomeScreenState extends State<PetsHomeScreen> {
             
             ),),
 
-            SizedBox(height: 10,),
-            Padding(padding: EdgeInsets.only(left: 22),
+           const SizedBox(height: 10,),
+           const Padding(padding: EdgeInsets.only(left: 22),
             
             child: Text.rich(
               
@@ -59,54 +60,58 @@ class _PetsHomeScreenState extends State<PetsHomeScreen> {
             ),
             const SizedBox(height: 10,),
 
-            SizedBox(
-              height: 90,
-              child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemCount: listPets.length,
-                itemBuilder: ((context, index){
-                  return GestureDetector(
-                    onTap: (){},
-                    child: Padding(
-                    padding: EdgeInsets.only(left: 20, top: 30),
-                    child: Column(
-                      children: [
-                        Container(
-                          
-                          
-                          height: 50,
-                          width: 65,
-                          decoration: BoxDecoration(
-                          
-                            color: selectedIndex == index ? Color.fromARGB(255, 236, 168, 141) : Color.fromARGB(255, 210, 243, 156) ,
-                            borderRadius: BorderRadius.circular(10),
-                            
-                            boxShadow: [
-                               const BoxShadow(
-                                blurRadius: 1.5,
-                                spreadRadius: 0,
-                                
-                               )
-                            ],
-                          ),
-                          child: Center(
-                            child: Text(listPets[index]),
-                          ),
-                        )
-                      ],
-                    ),
-                    ),
-
-                  );
-
-                })),
-            )
+            
 
           ],
         ),
       ),),
 
     );
+  }
+
+  SizedBox categorySelect() {
+    return SizedBox(
+            height: 90,
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemCount: listPets.length,
+              itemBuilder: ((context, index){
+                return GestureDetector(
+                  onTap: (){},
+                  child: Padding(
+                  padding:const EdgeInsets.only(left: 20, top: 30),
+                  child: Column(
+                    children: [
+                      Container(
+                        
+                        
+                        height: 50,
+                        width: 65,
+                        decoration: BoxDecoration(
+                        
+                          color: selectedIndex == index ? Color.fromARGB(255, 236, 168, 141) : Color.fromARGB(255, 210, 243, 156) ,
+                          borderRadius: BorderRadius.circular(10),
+                          
+                          boxShadow:const [
+                              BoxShadow(
+                              blurRadius: 1.5,
+                              spreadRadius: 0,
+                              
+                             )
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(listPets[index]),
+                        ),
+                      )
+                    ],
+                  ),
+                  ),
+
+                );
+
+              })),
+          );
   }
 }
