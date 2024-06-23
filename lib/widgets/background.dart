@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Background extends StatelessWidget {
@@ -14,7 +13,7 @@ class Background extends StatelessWidget {
       color: Colors.white,
       width: size.width,
       height: size.height,
-      child: Stack(
+      child: const Stack(
         children: [
           CoffeeBean(degree: 190, right: 180, top: 90),
           CoffeeBean(degree: 90, right: -50, top: 5),
