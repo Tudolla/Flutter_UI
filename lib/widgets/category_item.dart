@@ -11,9 +11,9 @@ class CategoryItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          height: 70,
-          width: 70,
-          padding: const EdgeInsets.all(10),
+          height: 60,
+          width: 60,
+          padding: const EdgeInsets.all(7),
           decoration: const BoxDecoration(
             color: Colors.white,
             shape: BoxShape.circle,
@@ -25,7 +25,7 @@ class CategoryItem extends StatelessWidget {
         ),
         Text(
           category.name.toLowerCase(),
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 13,
             color: Colors.white,

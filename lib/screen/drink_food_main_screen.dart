@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_ui/model/product_model.dart';
+import 'package:pet_ui/screen/detail_product_screen.dart';
 import 'package:pet_ui/utils/color.dart';
 import 'package:pet_ui/widgets/background.dart';
 import 'dart:math';
@@ -25,12 +26,13 @@ class _DrinkScreenState extends State<DrinkScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller = PageController(initialPage: 1, viewportFraction: viewPoint)
-      ..addListener(() {
-        setState(() {
-          pageOffSet == controller!.page;
-        });
-      });
+    controller =
+        PageController(initialPage: 1, viewportFraction: viewPointFraction)
+          ..addListener(() {
+            setState(() {
+              pageOffSet == controller!.page;
+            });
+          });
   }
 
   void despose() {
@@ -60,10 +62,11 @@ class _DrinkScreenState extends State<DrinkScreen> {
             const SizedBox(
               width: 5,
             ),
-            Column(
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Trung Nguyen,",
+                  "Trung Nguyên,",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -107,8 +110,8 @@ class _DrinkScreenState extends State<DrinkScreen> {
       ),
       body: Stack(
         children: [
-          Background(),
-          Positioned(
+          const Background(),
+          const Positioned(
             top: 30,
             left: 40,
             child: Text(
@@ -132,8 +135,8 @@ class _DrinkScreenState extends State<DrinkScreen> {
                     children: List.generate(
                         categories.length,
                         (index) => Container(
-                              height: 190,
-                              width: 107,
+                              height: 188,
+                              width: 102,
                               color: currentCategory == index
                                   ? Colors.amber
                                   : Colors.transparent,
@@ -146,11 +149,11 @@ class _DrinkScreenState extends State<DrinkScreen> {
             child: ClipPath(
               clipper: Clip(),
               child: Container(
-                height: 280,
+                height: 275,
                 width: MediaQuery.of(context).size.width,
                 color: firstColor,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(categories.length, (index) {
                     int decrease = 0;
                     int max = 1;
@@ -175,7 +178,7 @@ class _DrinkScreenState extends State<DrinkScreen> {
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: 10,
+                          top: 15,
                           bottom: bottomPadding.abs() * 75,
                         ),
                         child: CategoryItem(category: categories[index]),
@@ -225,10 +228,15 @@ class _DrinkScreenState extends State<DrinkScreen> {
                             final items =
                                 dataProducts[index % dataProducts.length];
                             return GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => DetailFoodScreen(
+                                        product: dataProducts[currentProduct %
+                                            dataProducts.length])));
+                              },
                               child: Padding(
                                 padding: EdgeInsets.only(
-                                  top: 200 - (scale / 1.6 * 170),
+                                  top: 200 - (scale / 1.3 * 170),
                                 ),
                                 child: Transform.rotate(
                                   angle: angel * pi,
@@ -253,23 +261,23 @@ class _DrinkScreenState extends State<DrinkScreen> {
                                   .name,
                               maxLines: 2,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                                fontSize: 18,
                                 height: 1.5,
                                 color: Colors.white,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text(
                               "\$${dataProducts[currentProduct % dataProducts.length].price}",
                               maxLines: 2,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                                fontSize: 18,
                                 height: 1.5,
                                 color: Colors.white,
                               ),
@@ -302,7 +310,7 @@ class _DrinkScreenState extends State<DrinkScreen> {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-            width: 1,
+            width: 3,
             color: index == currentProduct
                 ? Colors.amberAccent
                 : Colors.transparent),
@@ -333,5 +341,5 @@ class Clip extends CustomClipper<Path> {
   }
 
   @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
